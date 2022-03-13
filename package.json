@@ -1,0 +1,26 @@
+{
+  "name": "cicd_new",
+  "version": "1.0.0",
+  "description": "cicd_new",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruthavivi/CICD_NEW.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ruthavivi/CICD_NEW/issues"
+  },
+  "homepage": "https://github.com/ruthavivi/CICD_NEW#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "devDependencies": {}
+}
