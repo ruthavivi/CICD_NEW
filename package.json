@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "node src/index.js",
-    "test": "mocha tests/*.spec.js --color"
+    "start": "node src/index.js",
+    "test": "mocha tests/*.spec.js --color",
+    "lint": "eslint src/* --color"
   },
   "repository": {
     "type": "git",
@@ -23,5 +25,8 @@
   "directories": {
     "test": "tests"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^8.11.0",
+    "eslint-config-google": "^0.14.0"
+  }
 }
