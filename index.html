@@ -3,7 +3,7 @@
 <title>Group 7 Project</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> <!-- We used fonts and icons and etc from w3schools.com -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -28,29 +28,35 @@ body {font-family: "Lato", sans-serif}
             <a href="#" class="w3-bar-item w3-button">Benny Shalom</a>
         </div>
         </div>
-        <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
+        <button onclick="document.getElementById('id01').style.display='block'"
+        class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-right">ABOUT</button>
+        <!-- <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a> -->
+    </div>
+    </div>
+
+  <!-- About Popup -->
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+        <div class="w3-container">
+        <span onclick="document.getElementById('id01').style.display='none'"
+        class="w3-button w3-display-topright">&times;</span>
+        <h2 class="wide">SCE 3rd year Project</h2>
+        <p>hello bla bla</p>
+        </div>
     </div>
     </div>
 
     <!-- The TOP PAGE Section -->
     <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="login.html">
-        <h2 class="wide">Welcome</h2>
-        <p class="opacity"><i> </i></p>  <!-- can write here somthing, it will be under Welcome -->
+        <h1 class="wide">Welcome</h1>
+        <h2 class="opacity"><i>SCE 3rd year Project - Group 7</i></h2>
         <div class="w3-row w3-padding-32">
-        <div class="w3-third">
-      
-    </div>
-
-
+ 
     <!-- The MEMBERS Section -->
-    
-        <h2 class="wide">SCE 3rd year Project</h2>
-        <p class="opacity"><i>Group 7</i></p>
         <p class="center"><i>Members:</i></p>
-        
         <div class="w3-quarter">
             <p>Benny</p>
-            <img src="images\1.png"  style="width:71%">
+            <img src="images\1.png"  style="width:50%">
         </div>
         <div class="w3-quarter">
             <p>Liubov</p>
@@ -64,23 +70,15 @@ body {font-family: "Lato", sans-serif}
             <p>Eden</p>
             <img src="images\2.png"  style="width:50%">
         </div>
-    
-  
-    <!-- End Page Content -->
     </div>
 
-    <!-- Image of location/map -->
+    <!-- Image -->
     <img src="https://www.sce.ac.il/filestock/img/img_1534309178607-0.jpg" class="w3-image w3-greyscale-min" style="width:100%">
 
     <!-- Footer -->
     <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
 <!--
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
 -->
     <p class="w3-medium"><a href="https://www.sce.ac.il/" target="_blank"> SCE </a></p>
     <p class="w3-medium"><a href="https://github.com/ruthavivi/CICD_NEW" target="_blank"> <i class="fa fa-github-square" style="font-size:36px"></i> </a> </p>
