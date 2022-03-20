@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Group 7 Project</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> <!-- We used fonts and icons and etc from w3schools.com -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+</style>
+<body>
+
+    <!-- Navbar -->
+    <div class="w3-top">
+    <div class="w3-bar w3-black w3-card">
+        <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+        <a href="login.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">LOGIN</a>
+        <a href="signup.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">SIGNUP</a>
+        <div class="w3-dropdown-hover w3-hide-small">
+        <button class="w3-padding-large w3-button" title="More">MEMBERS <i class="fa fa-caret-down"></i></button>     
+        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="#" class="w3-bar-item w3-button">Eden Dahan</a>
+            <a href="#" class="w3-bar-item w3-button">Ruth Avivi</a>
+            <a href="#" class="w3-bar-item w3-button">Liubov Vasilchuk</a>
+            <a href="#" class="w3-bar-item w3-button">Benny Shalom</a>
+        </div>
+        </div>
+        <button onclick="document.getElementById('id01').style.display='block'"
+        class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-right">ABOUT</button>
+        <!-- <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a> -->
+    </div>
+    </div>
+
+  <!-- About Popup -->
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+        <div class="w3-container">
+        <span onclick="document.getElementById('id01').style.display='none'"
+        class="w3-button w3-display-topright">&times;</span>
+        <h2 class="wide">About</h2>
+        <p>Hello and welcome</p>
+        <p>This website is part of our project from the course 'Software project management' @ SCE - 3rd year. </p>
+        <p>Over the next few weeks, we will add, update and improve the website. </p>
+        </div>
+    </div>
+    </div>
+
+    <!-- The TOP PAGE Section -->
+    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="login.html">
+        <h1 class="wide">Welcome</h1>
+        <h2 class="opacity"><i>SCE 3rd year Project - Group 7</i></h2>
+        <div class="w3-row w3-padding-32">
+ 
+    <!-- The MEMBERS Section -->
+        <p class="center">Members:</p>
+        <div class="w3-quarter">
+            <p>Benny</p>
+            <img src="images\1.png"  style="width:50%">
+        </div>
+        <div class="w3-quarter">
+            <p>Liubov</p>
+            <img src="images\2.png"  style="width:50%">
+        </div>
+        <div class="w3-quarter">
+            <p>Ruth</p>
+            <img src="images\2.png"  style="width:50%">
+        </div>
+        <div class="w3-quarter">
+            <p>Eden</p>
+            <img src="images\2.png"  style="width:50%">
+        </div>
+    </div>
+
+    <!-- Image -->
+    <img src="images\sce2.png" class="" style="width:100%">
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+<!--
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+-->
+    <p class="w3-medium"><a href="https://www.sce.ac.il/" target="_blank"> SCE </a></p>
+    <p class="w3-medium"><a href="https://github.com/ruthavivi/CICD_NEW" target="_blank"> <i class="fa fa-github-square" style="font-size:36px"></i> </a> </p>
+    <p class="w3-medium"><a href="https://ruthavivi.github.io/CICD_NEW/" target="_blank"> Live site </a></p>
+    </footer>
+    </script>
+    </body>
+</html>
