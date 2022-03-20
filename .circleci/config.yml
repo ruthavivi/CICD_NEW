@@ -11,7 +11,7 @@ jobs:
     executor:
       name: node/default
     steps:
-      - run: npm install --registry https://registry.npmjs.org
+      - run: npm install 
       - run: npm test
       - run: npm run lint
 
@@ -22,4 +22,3 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - my-example-job
-         
