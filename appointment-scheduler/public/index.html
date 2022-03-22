@@ -1,0 +1,46 @@
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>Appointment Scheduler</title>
+  
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="stylesheet" href="styles/styles.css" />
+    </head>
+    <body>
+      <main>
+        <h1>Appointment Scheduler</h1>
+        <!-- datepicker from html. Source: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local -->
+        <form action="/appointment" method="POST">
+          <div>
+            <label for="slot">Choose your slot: </label>
+            <input
+              id="slot"
+              type="datetime-local"
+              name="slotdate"
+              min="2022-03-21T09:00"   
+              max="2025-10-30T17:00"
+              step="1800"
+              required
+            />
+            <span class="validity"></span>
+          </div>
+          <div>
+            <label for="phonenumber">Your phone number:</label>
+            <input type="tel" id="phonenumber" name="phonenumber" required />
+            <span class="validity"></span>
+          </div>
+          <div>
+            <input type="submit" value="Book slot!" />
+          </div>
+        </form>
+        <form action="/cancelAppointment" method="POST">
+          <div>
+            <input type="text" name="code" placeholder="code" />
+            <input type="submit" value="Remove slot!" />
+          </div>
+        </form>
+      </main>
+    </body>
+  </html>

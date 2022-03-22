@@ -1,0 +1,20 @@
+{
+  "name": "appointment-scheduler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node script/server.js"
+  },
+  "author": "Benny",
+  "license": "ISC",
+  "dependencies": {
+    "@vonage/server-sdk": "^2.10.11",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.19.0",
+    "uuid": "^8.3.2"
+  }
+}
