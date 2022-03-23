@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "to run the program\r first type \"npm install\" in the terminal",
   "scripts": {
-    "start": "node login.html",
+    "start": "node index.html",
     "test": "mocha tests/*.spec.js --color",
     "lint": "eslint src/* --color"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "firebase": "^9.6.9"
   },
   "main": "server.js",
   "directories": {
