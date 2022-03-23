@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "firebase": "^9.6.9"
+    "firebase": "^9.6.9",
+    "firebaseui": "^6.0.1"
   },
   "main": "server.js",
   "directories": {
