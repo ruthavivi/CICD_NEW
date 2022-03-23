@@ -29,7 +29,17 @@ body {font-family: "Lato", sans-serif}
                 <a href="pages/sign-up.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Sign Up</a>
             </div>
             </div>
-        <a href="src/appointment.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">APPOINTMENTS</a>  
+        <button onclick="doClick()" class="w3-bar-item w3-button w3-padding-large w3-hide-small">APPOINTMENTS</a>  
+            <script src="./js/app.js">
+            function doClick() {
+                var checkinguser ="hi";
+                checkinguser =checkUserFullName();  // the function is not recognized (cant get it from "./js/app.js") - to fix later
+            if (checkinguser != null)
+                window.location.href = "./src/appointment.html";
+            else
+                window.location.href = "./src/appointment2.html";
+            }
+            </script>
         <button onclick="document.getElementById('id01').style.display='block'"
         class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-right">ABOUT</button>
         <!-- <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a> -->
@@ -53,8 +63,8 @@ body {font-family: "Lato", sans-serif}
 
     <!-- The TOP PAGE Section -->
     <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="login.html">
-        <h1 class="wide"><b>SCE 3rd year Project - Group 7</b></h1>
-        <p class="center">(for more information click the <b>'About'</b> buton on the top right corner)</p>
+        <h1 class="wide"><b>SCE 3rd year Project</b></h1>
+        <p class="center">(for more information click on the <b>'About'</b> buton at the top right corner)</p>
         <h2 class="opacity"><i></i></h2>
         <div class="w3-row w3-padding-32">
  
@@ -91,11 +101,6 @@ body {font-family: "Lato", sans-serif}
     <p class="w3-medium"><a href="https://ruthavivi.github.io/CICD_NEW/" target="_blank"> Live site </a></p>
     </footer>
     </script>
-
-<script>
-
-
-</script>
 
 </body>
 </html>
