@@ -5,11 +5,13 @@
         "es2021": true
     },
     "extends": [
-        "google"
+        "eslint:recommended", "google"
+        
     ],
     "parserOptions": {
         "ecmaVersion": "latest"
     },
     "rules": {
+        "no-unused-vars": "error"
     }
 }
