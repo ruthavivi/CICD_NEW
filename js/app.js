@@ -1,3 +1,6 @@
+let myUser;
+console.log("test top");
+console.log(myUser);
 // xxxxxxxxxx Working For Sign Up Form xxxxxxxxxx
 // xxxxxxxxxx Full Name Validation xxxxxxxxxx
 function checkUserFullName(){
@@ -204,6 +207,8 @@ firebase.auth().onAuthStateChanged((user)=>{
         let uid
         if(user != null){
             uid = user.uid;
+            myUser = uid; // aaaaa
+            console.log(myUser); // aaaaa
         }
         let firebaseRefKey = firebase.database().ref().child(uid);
         firebaseRefKey.on('value', (dataSnapShot)=>{
@@ -307,3 +312,6 @@ function signOut(){
         })
     });
 }
+
+console.log("test bottom");
+setTimeout(() => {  console.log(myUser); }, 2000);

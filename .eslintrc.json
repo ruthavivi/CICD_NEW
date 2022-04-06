@@ -8,8 +8,10 @@
         "eslint:recommended", "google"
         
     ],
-    "parserOptions": {
-        "ecmaVersion": "latest"
+    "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
     },
     "rules": {
         "no-unused-vars": "error"
