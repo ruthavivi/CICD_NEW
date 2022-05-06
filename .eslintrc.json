@@ -8,7 +8,7 @@
         "eslint:recommended", "google"
         
     ],
-    "parser": "babel-eslint",
+    "parser": "/usr/local/lib/node_modules/babel-eslint",
   "parserOptions": {
     "sourceType": "module",
     "allowImportExportEverywhere": true
