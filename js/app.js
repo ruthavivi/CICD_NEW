@@ -167,15 +167,15 @@ function signIn(){
     var userSIEmail = document.getElementById("userSIEmail").value;
     var userSIPassword = document.getElementById("userSIPassword").value;
     var userSIEmailFormate = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    var userSIPasswordFormate = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}/;      
+    //var userSIPasswordFormate = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}/;      
 
     var checkUserEmailValid = userSIEmail.match(userSIEmailFormate);
-    var checkUserPasswordValid = userSIPassword.match(userSIPasswordFormate);
+    //var checkUserPasswordValid = userSIPassword.match(userSIPasswordFormate);
 
     if(checkUserEmailValid == null){
         return checkUserSIEmail();
-    }else if(checkUserPasswordValid == null){
-        return checkUserSIPassword();
+    //}else if(checkUserPasswordValid == null){
+        //return checkUserSIPassword();
     }else{
         firebase.auth().signInWithEmailAndPassword(userSIEmail, userSIPassword).then((success) => {
             swal({
@@ -247,6 +247,125 @@ function hideEditProfileForm(){
     document.getElementById("profileSection").style.display = "block";
     document.getElementById("editProfileForm").style.display = "none";
 }
+// xxxxxxxxxx showChangePasswordForm with detail xxxxxxxxxx
+function showEditChangePasswordForm(){
+    document.getElementById("profileSection").style.display = "none"
+    document.getElementById("editChangePasswordForm").style.display = "block"
+    var userPfFullName = document.getElementById("userPfFullName").innerHTML;
+    var userPfSurname = document.getElementById("userPfSurname").innerHTML;
+    var userPfBio = document.getElementById("userPfBio").innerHTML;
+    document.getElementById("userFullName").value = userPfFullName; 
+    document.getElementById("userSurname").value = userPfSurname; 
+    document.getElementById("userBio").value = userPfBio; 
+}
+// xxxxxxxxxx Hide change password form xxxxxxxxxx
+function hideEditChangePasswordForm(){
+    document.getElementById("profileSection").style.display = "block";
+    document.getElementById("editChangePasswordForm").style.display = "none";
+}
+function resetPassword()
+{    
+    console.log("im in resetPassword");
+    const reset = document.querySelector('#forget_form');
+    reset.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email_Forget = reset['email_reset'].value;
+        if(email_Forget!="")
+        {
+            
+
+            firebase.auth().sendPasswordResetEmail(email_Forget).then(() => {
+            alert('Password Reset Email Sent Successfully!');
+            
+        
+        })
+        .catch(error => {
+            alert(error.message);
+        })
+        
+    }
+    else
+    {
+        alert("Enter your email address");
+    }
+
+    });
+
+}
+// xxxxxxxxxx 0000Save updated password and update database xxxxxxxxxx
+function saveUpdatePassword() {
+    let newPassword = document.getElementById("userPassword").value
+    let confirmPassword = document.getElementById("confirmPassword").value
+
+    if(newPassword.value != confirmPassword.value) {
+        confirmPassword.setCustomValidity("Passwords Don't Match");
+      return false;
+    } else {
+        let newPassword = document.getElementById("userPassword").value
+        reauthenticate = (currentPassword) => {
+            var user = firebase.auth().currentUser;
+            var cred = firebase.auth.EmailAuthProvider.credential(
+              user.email, currentPassword);
+            return user.reauthenticateAndRetrieveDataWithCredential(cred);
+          }
+          
+          changePassword = (currentPassword, newPassword) => {
+            this.reauthenticate(currentPassword).then(() => {
+              var user = firebase.auth().currentUser;
+              user.updatePassword(newPassword).then(() => {
+                console.log("Password updated!");
+              }).catch((error) => {
+                console.log(error);
+              });
+            }).catch((error) => {
+              console.log(error);
+            });
+          }
+        //console.log(currentPassword) // currentPassword is not defined ERROR
+        console.log(password)
+        console.log(confirm_password)
+
+        
+
+  }
+}
+  
+// xxxxxxxxxx Save updated password and update database xxxxxxxxxx
+function ZZZsaveUpdatePassword(){
+    let newPassword = document.getElementById("password").value
+    let confirmPassword = document.getElementById("confirmPassword").value
+    console.log(newPassword)
+    console.log(confirmPassword)
+    reauthenticate = (currentPassword) => {
+        var user = firebase.auth().currentUser;
+        var cred = firebase.auth.EmailAuthProvider.credential(
+            user.email, currentPassword);
+        return user.reauthenticateWithCredential(cred);
+    }
+    
+    console.log(Firebase.auth.user.currentPassword)
+    changePassword = (currentPassword, newPassword) => {
+    this.reauthenticate(currentPassword).then(() => {
+        var user = firebase.auth().currentUser;
+        user.updatePassword(newPassword).then(() => {
+        console.log("Password updated!");
+        swal({
+            type: 'successfull',
+            title: 'Update successfull',
+            text: 'New password updated.', 
+        }).then((value) => {
+            setTimeout(function(){
+                document.getElementById("profileSection").style.display = "block";
+
+                document.getElementById("editProfileForm").style.display = "none";
+                document.getElementById("editChangePasswordForm").style.display = "none";
+            }, 1000)
+        });
+        }).catch((error) => { console.log(error); });
+    }).catch((error) => { console.log(error); });
+    }
+    
+}
 // xxxxxxxxxx Save profile and update database xxxxxxxxxx
 function saveProfile(){
     let userFullName = document.getElementById("userFullName").value 
@@ -286,6 +405,7 @@ function saveProfile(){
                 document.getElementById("profileSection").style.display = "block";
 
                 document.getElementById("editProfileForm").style.display = "none";
+                document.getElementById("editChangePasswordForm").style.display = "none";
             }, 1000)
         });
     }
