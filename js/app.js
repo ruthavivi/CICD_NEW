@@ -263,8 +263,7 @@ function hideEditChangePasswordForm(){
     document.getElementById("profileSection").style.display = "block";
     document.getElementById("editChangePasswordForm").style.display = "none";
 }
-function resetPassword()
-{    
+function resetPassword(){    
     console.log("im in resetPassword");
     const reset = document.querySelector('#forget_form');
     reset.addEventListener('submit', (e) => {
@@ -272,62 +271,53 @@ function resetPassword()
         const email_Forget = reset['email_reset'].value;
         if(email_Forget!="")
         {
-            
-
             firebase.auth().sendPasswordResetEmail(email_Forget).then(() => {
             alert('Password Reset Email Sent Successfully!');
-            
-        
         })
         .catch(error => {
             alert(error.message);
-        })
-        
+        })  
     }
     else
     {
         alert("Enter your email address");
     }
-
     });
-
 }
 // xxxxxxxxxx 0000Save updated password and update database xxxxxxxxxx
 function saveUpdatePassword() {
+    let currentPassword = document.getElementById("currentPassword").value
     let newPassword = document.getElementById("userPassword").value
     let confirmPassword = document.getElementById("confirmPassword").value
 
-    if(newPassword.value != confirmPassword.value) {
-        confirmPassword.setCustomValidity("Passwords Don't Match");
+    if(newPassword != confirmPassword) {
+        console.log("im in -dont match")
+        alert("Passwords Don't Match!");
       return false;
     } else {
-        let newPassword = document.getElementById("userPassword").value
-        reauthenticate = (currentPassword) => {
-            var user = firebase.auth().currentUser;
-            var cred = firebase.auth.EmailAuthProvider.credential(
-              user.email, currentPassword);
-            return user.reauthenticateAndRetrieveDataWithCredential(cred);
-          }
-          
-          changePassword = (currentPassword, newPassword) => {
-            this.reauthenticate(currentPassword).then(() => {
-              var user = firebase.auth().currentUser;
-              user.updatePassword(newPassword).then(() => {
-                console.log("Password updated!");
-              }).catch((error) => {
-                console.log(error);
-              });
+            console.log("im in - matched")
+            let newPassword = document.getElementById("userPassword").value
+            const user = firebase.auth().currentUser;
+
+            // TODO(you): prompt the user to re-provide their sign-in credentials
+            console.log(user.email)
+            console.log(currentPassword)
+            const credential = firebase.auth.EmailAuthProvider.credential(user.email, currentPassword);
+            console.log(credential)
+
+            user.reauthenticateWithCredential(credential).then(() => {
+                user.updatePassword(newPassword).then(() => {
+                  // Update successful.
+                  alert("New Password Updated successfully!");
+                }).catch((error) => {
+                  // An error ocurred
+                  // ...
+                });
             }).catch((error) => {
-              console.log(error);
+            // An error ocurred
+            // ...
             });
-          }
-        //console.log(currentPassword) // currentPassword is not defined ERROR
-        console.log(password)
-        console.log(confirm_password)
-
-        
-
-  }
+        }
 }
   
 // xxxxxxxxxx Save updated password and update database xxxxxxxxxx
