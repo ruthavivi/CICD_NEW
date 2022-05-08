@@ -309,52 +309,57 @@ function saveUpdatePassword() {
                 user.updatePassword(newPassword).then(() => {
                   // Update successful.
                   alert("New Password Updated successfully!");
+                  hideEditChangePasswordForm();
                 }).catch((error) => {
                   // An error ocurred
                   // ...
                 });
             }).catch((error) => {
-            // An error ocurred
-            // ...
+                alert("Wrong current password!");
             });
         }
 }
-  
-// xxxxxxxxxx Save updated password and update database xxxxxxxxxx
-function ZZZsaveUpdatePassword(){
-    let newPassword = document.getElementById("password").value
-    let confirmPassword = document.getElementById("confirmPassword").value
-    console.log(newPassword)
-    console.log(confirmPassword)
-    reauthenticate = (currentPassword) => {
-        var user = firebase.auth().currentUser;
-        var cred = firebase.auth.EmailAuthProvider.credential(
-            user.email, currentPassword);
-        return user.reauthenticateWithCredential(cred);
-    }
-    
-    console.log(Firebase.auth.user.currentPassword)
-    changePassword = (currentPassword, newPassword) => {
-    this.reauthenticate(currentPassword).then(() => {
-        var user = firebase.auth().currentUser;
-        user.updatePassword(newPassword).then(() => {
-        console.log("Password updated!");
-        swal({
-            type: 'successfull',
-            title: 'Update successfull',
-            text: 'New password updated.', 
-        }).then((value) => {
-            setTimeout(function(){
-                document.getElementById("profileSection").style.display = "block";
 
-                document.getElementById("editProfileForm").style.display = "none";
-                document.getElementById("editChangePasswordForm").style.display = "none";
-            }, 1000)
-        });
-        }).catch((error) => { console.log(error); });
-    }).catch((error) => { console.log(error); });
-    }
+// xxxxxxxxxx showChangePasswordForm with detail xxxxxxxxxx
+function showEditChangeEmailForm(){
+    document.getElementById("profileSection").style.display = "none"
+    document.getElementById("editChangeEmailForm").style.display = "block"
+    var userPfFullName = document.getElementById("userPfFullName").innerHTML;
+    var userPfSurname = document.getElementById("userPfSurname").innerHTML;
+    var userPfBio = document.getElementById("userPfBio").innerHTML;
+    document.getElementById("userFullName").value = userPfFullName; 
+    document.getElementById("userSurname").value = userPfSurname; 
+    document.getElementById("userBio").value = userPfBio; 
+}
+// xxxxxxxxxx Hide change password form xxxxxxxxxx
+function hideEditChangeEmailForm(){
+    document.getElementById("profileSection").style.display = "block";
+    document.getElementById("editChangeEmailForm").style.display = "none";
+}
+// xxxxxxxxxx 0000Save updated password and update database xxxxxxxxxx
+function saveUpdateEmail() {
+    let currentPassword = document.getElementById("currentPassword2").value
+    let newEmail = document.getElementById("userEmail").value
     
+
+    const user = firebase.auth().currentUser;
+
+    // TODO(you): prompt the user to re-provide their sign-in credentials
+    
+    const credential = firebase.auth.EmailAuthProvider.credential(user.email, currentPassword);
+    user.reauthenticateWithCredential(credential).then(() => {
+        user.updateEmail(newEmail).then(() => {
+            // Update successful.
+            alert("New Email Updated successfully!");
+            hideEditChangeEmailForm();
+        }).catch((error) => {
+            // An error ocurred
+            // ...
+        });
+    }).catch((error) => {
+        alert("Wrong current password!");
+    });
+        
 }
 // xxxxxxxxxx Save profile and update database xxxxxxxxxx
 function saveProfile(){

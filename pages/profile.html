@@ -56,6 +56,8 @@
                                 <p id="userPfBio">Profile biography</p>
                             </div>
                             <div class="col-lg-12 col-md-12 text-center">
+                                <button type="button" class="btn btn-outline-primary btn-block text-uppercase mb-3" onclick="showEditChangeEmailForm()">
+                                Change Mail<small></small></button>
                                 <button type="button" class="btn btn-outline-primary btn-block text-uppercase mb-3" onclick="showEditChangePasswordForm()">
                                 Change Password<small></small></button>
                                 <button type="button" class="btn btn-outline-primary btn-block text-uppercase mb-3" onclick="showEditProfileForm()">
@@ -63,6 +65,27 @@
                                 <button type="button" class="btn btn-outline-secondary text-uppercase" onclick="signOut()">
                                 Sign Out<small></small></button>
                             </div>
+                        </div>
+                        <div id="editChangeEmailForm">
+                            <h2 class="h2 text-center text-dark mb-3">Change Email</h2>
+                            <form action="" method="post" name="signupForm" id="signupForm">
+                                <div class="form-group">
+                                    <label for="userPassword">Current Password<span class="text-danger ml-1">*</span></label>
+                                    <input type="password" class="form-control" id="currentPassword2"  placeholder="**********">
+                                    <small id="userPasswordError" class="form-text text-danger"></small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="userEmail">New Email address<span class="text-danger ml-1">*</span></label>
+                                <input type="email" class="form-control" id="userEmail" onblur="checkUserEmail()" placeholder="mail@mail.com">
+                                <small id="userEmailError" class="form-text text-danger">Please check your email address.</small>
+                                </div>
+                                     <p></p>
+
+                              <button type="button" class="btn btn-outline-primary btn-block text-uppercase mb-3" onclick="saveUpdateEmail()">Save</button>
+                              <button type="button" class="btn btn-outline-secondary btn-block text-uppercase" onclick="hideEditChangeEmailForm()">Cancel</button>
+                                
+                            </form>
                         </div>
                         <div id="editChangePasswordForm">
                             <h2 class="h2 text-center text-dark mb-3">Change Password</h2>
