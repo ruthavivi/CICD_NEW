@@ -70,10 +70,21 @@ function checkUserBio(){
         document.getElementById("userBioError").style.display = "none";
     }
 }
+// xxxxxxxxxx Check user bio characters. It'll use later xxxxxxxxxx
+function checkUserPhone(){
+    var userPhone = document.getElementById("userPhone").value;
+    var flag = false;
+    if(flag){
+        document.getElementById("userPhoneError").style.display = "block";
+    }else{
+        document.getElementById("userPhoneError").style.display = "none";
+    }
+}
 // xxxxxxxxxx Submitting and Creating new user in firebase authentication xxxxxxxxxx
 function signUp(){
     var userFullName = document.getElementById("userFullName").value;
     var userSurname = document.getElementById("userSurname").value;
+    var userPhone = document.getElementById("userPhone").value;
     var userEmail = document.getElementById("userEmail").value;
     var userPassword = document.getElementById("userPassword").value;
     var userFullNameFormate = /^([A-Za-z.\s_-])/;    
@@ -103,6 +114,7 @@ function signUp(){
             var userData = {
                 userFullName: userFullName,
                 userSurname: userSurname,
+                userPhone: userPhone,
                 userEmail: userEmail,
                 userPassword: userPassword,
                 userFb: "https://www.facebook.com/",
@@ -214,8 +226,9 @@ firebase.auth().onAuthStateChanged((user)=>{
         firebaseRefKey.on('value', (dataSnapShot)=>{
             document.getElementById("userPfFullName").innerHTML = dataSnapShot.val().userFullName;
             document.getElementById("userPfSurname").innerHTML = dataSnapShot.val().userSurname;
-            // userEmail = dataSnapShot.val().userEmail;
-            // userPassword = dataSnapShot.val().userPassword;
+            document.getElementById("userPfPhone").innerHTML = dataSnapShot.val().userPhone;
+            //userEmail = dataSnapShot.val().userEmail;
+            //userPassword = dataSnapShot.val().userPassword;
             document.getElementById("userPfFb").setAttribute('href', dataSnapShot.val().userFb);
             document.getElementById("userPfTw").setAttribute('href', dataSnapShot.val().userTw);
             document.getElementById("userPfGp").setAttribute('href', dataSnapShot.val().userGp);
@@ -231,12 +244,14 @@ function showEditProfileForm(){
     document.getElementById("editProfileForm").style.display = "block"
     var userPfFullName = document.getElementById("userPfFullName").innerHTML;
     var userPfSurname = document.getElementById("userPfSurname").innerHTML;
+    var userPfPhone = document.getElementById("userPfPhone").innerHTML; // 
     var userPfFb = document.getElementById("userPfFb").getAttribute("href");
     var userPfTw = document.getElementById("userPfTw").getAttribute("href");
     var userPfGp = document.getElementById("userPfGp").getAttribute("href");
     var userPfBio = document.getElementById("userPfBio").innerHTML;
     document.getElementById("userFullName").value = userPfFullName; 
     document.getElementById("userSurname").value = userPfSurname; 
+    document.getElementById("userPhone").value = userPfPhone;  //
     document.getElementById("userFacebook").value = userPfFb; 
     document.getElementById("userTwitter").value = userPfTw; 
     document.getElementById("userGooglePlus").value = userPfGp; 
@@ -363,8 +378,11 @@ function saveUpdateEmail() {
 }
 // xxxxxxxxxx Save profile and update database xxxxxxxxxx
 function saveProfile(){
+    let userEmail = firebase.auth().currentUser.email 
+    //let userPassword = document.getElementById("userSIPassword").value 
     let userFullName = document.getElementById("userFullName").value 
     let userSurname = document.getElementById("userSurname").value 
+    let userPhone = document.getElementById("userPhone").value 
     let userFacebook = document.getElementById("userFacebook").value 
     let userTwitter = document.getElementById("userTwitter").value 
     let userGooglePlus = document.getElementById("userGooglePlus").value 
@@ -383,8 +401,11 @@ function saveProfile(){
         }
         var firebaseRef = firebase.database().ref();
         var userData = {
+            userEmail : userEmail,
+            //userPassword : userPassword,
             userFullName: userFullName,
             userSurname: userSurname,
+            userPhone: userPhone,
             userFb: userFacebook,
             userTw: userTwitter,
             userGp: userGooglePlus,
