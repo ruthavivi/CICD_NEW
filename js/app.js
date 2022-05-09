@@ -1,6 +1,20 @@
 let myUser;
 console.log("test top");
 console.log(myUser);
+
+$(document).ready(function() {
+    $('typebutton').click(function() {
+        var value = $("input[type=radio][name=contact]:checked").val();
+        if (value) {
+            signUp(value);
+        }
+        else {
+            alert('you must select either doctor or patient');
+            console.log("must choose doc/pat")
+        }
+    })
+});
+
 // xxxxxxxxxx Working For Sign Up Form xxxxxxxxxx
 // xxxxxxxxxx Full Name Validation xxxxxxxxxx
 function checkUserFullName(){
@@ -80,11 +94,22 @@ function checkUserPhone(){
         document.getElementById("userPhoneError").style.display = "none";
     }
 }
+function checkUserType(){
+    var userPhone = document.getElementById("userType").value;
+    var flag = false;
+    if(flag){
+        document.getElementById("userTypeError").style.display = "block";
+    }else{
+        document.getElementById("userTypeError").style.display = "none";
+    }
+}
 // xxxxxxxxxx Submitting and Creating new user in firebase authentication xxxxxxxxxx
-function signUp(){
+function signUp(type){
     var userFullName = document.getElementById("userFullName").value;
     var userSurname = document.getElementById("userSurname").value;
     var userPhone = document.getElementById("userPhone").value;
+    var userType = type;
+    console.log(type); // test
     var userEmail = document.getElementById("userEmail").value;
     var userPassword = document.getElementById("userPassword").value;
     var userFullNameFormate = /^([A-Za-z.\s_-])/;    
@@ -115,6 +140,7 @@ function signUp(){
                 userFullName: userFullName,
                 userSurname: userSurname,
                 userPhone: userPhone,
+                userType: userType,
                 userEmail: userEmail,
                 userPassword: userPassword,
                 userFb: "https://www.facebook.com/",
@@ -227,6 +253,7 @@ firebase.auth().onAuthStateChanged((user)=>{
             document.getElementById("userPfFullName").innerHTML = dataSnapShot.val().userFullName;
             document.getElementById("userPfSurname").innerHTML = dataSnapShot.val().userSurname;
             document.getElementById("userPfPhone").innerHTML = dataSnapShot.val().userPhone;
+            document.getElementById("userPfType").innerHTML = dataSnapShot.val().userType;
             //userEmail = dataSnapShot.val().userEmail;
             //userPassword = dataSnapShot.val().userPassword;
             document.getElementById("userPfFb").setAttribute('href', dataSnapShot.val().userFb);
@@ -245,6 +272,7 @@ function showEditProfileForm(){
     var userPfFullName = document.getElementById("userPfFullName").innerHTML;
     var userPfSurname = document.getElementById("userPfSurname").innerHTML;
     var userPfPhone = document.getElementById("userPfPhone").innerHTML; // 
+    var userPfType = document.getElementById("userPfType").innerHTML;
     var userPfFb = document.getElementById("userPfFb").getAttribute("href");
     var userPfTw = document.getElementById("userPfTw").getAttribute("href");
     var userPfGp = document.getElementById("userPfGp").getAttribute("href");
@@ -252,6 +280,7 @@ function showEditProfileForm(){
     document.getElementById("userFullName").value = userPfFullName; 
     document.getElementById("userSurname").value = userPfSurname; 
     document.getElementById("userPhone").value = userPfPhone;  //
+    document.getElementById("userType").value = userPfType;
     document.getElementById("userFacebook").value = userPfFb; 
     document.getElementById("userTwitter").value = userPfTw; 
     document.getElementById("userGooglePlus").value = userPfGp; 
@@ -378,11 +407,12 @@ function saveUpdateEmail() {
 }
 // xxxxxxxxxx Save profile and update database xxxxxxxxxx
 function saveProfile(){
-    let userEmail = firebase.auth().currentUser.email 
+    let userEmail = firebase.auth().currentUser.email
     //let userPassword = document.getElementById("userSIPassword").value 
     let userFullName = document.getElementById("userFullName").value 
     let userSurname = document.getElementById("userSurname").value 
     let userPhone = document.getElementById("userPhone").value 
+    let userType = document.getElementById("userType").value
     let userFacebook = document.getElementById("userFacebook").value 
     let userTwitter = document.getElementById("userTwitter").value 
     let userGooglePlus = document.getElementById("userGooglePlus").value 
@@ -406,6 +436,7 @@ function saveProfile(){
             userFullName: userFullName,
             userSurname: userSurname,
             userPhone: userPhone,
+            userType: userType,
             userFb: userFacebook,
             userTw: userTwitter,
             userGp: userGooglePlus,
