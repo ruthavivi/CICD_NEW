@@ -6,6 +6,8 @@ $(document).ready(function() {
     $('typebutton').click(function() {
         var value = $("input[type=radio][name=contact]:checked").val();
         if (value) {
+            if (value == "Doctor")
+                {alert('Hello new doctor, The Administration will contact you within few days to verify you as one of our doctors, and provide you with your own page and calendar booking');}
             signUp(value);
         }
         else {
